@@ -27,6 +27,7 @@ void marriage(response r){
   puts("us with a proposal of marriage.");
 }
 
+//arry de ponteiros para funcoes
 void(*replies[])(response)={dump,second_chance, marriage};
 
 int main(){
