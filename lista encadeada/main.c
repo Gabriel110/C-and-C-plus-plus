@@ -40,9 +40,21 @@ void push(List* list, DataNode data){
   list->size++;
 };
 
+void printList(List* li){
+  Node* i = li->head;
+
+  if(li == NULL)
+    printf("Lista vazia!");
+
+  for(;i != NULL; i = i->next){
+    puts("++++++++++++++++++++++++++");
+    printf("%d",i->data.id);
+  }
+  printf("\n");
+};
 int main(){
   List * lista = create_list();
   DataNode data = {5};
   push(lista, data);
-  printf("%d",lista->head->data.id);
+  
 }
