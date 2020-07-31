@@ -27,7 +27,22 @@ List *create_list(){
   return list;
 };
 
+void push(List* list, DataNode data){
+  //alocando memoria
+  Node* node = (Node*)malloc(sizeof(Node));
+  //atribuindo o dado ao no
+  node->data = data;
+  //fazendo next que e null virar a cabeca
+  node->next = list->head;
+  //colocando o no na cabeaca
+  list->head = node;
+  //aumentando o tamanho da lista
+  list->size++;
+};
+
 int main(){
   List * lista = create_list();
-  printf("%d",lista->size);
+  DataNode data = {5};
+  push(lista, data);
+  printf("%d",lista->head->data.id);
 }
