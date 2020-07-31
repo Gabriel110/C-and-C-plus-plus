@@ -43,7 +43,7 @@ void push(List* list, DataNode data){
 void printList(List* li){
   Node* i = li->head;
 
-  if(li == NULL)
+  if(i == NULL)
     printf("Lista vazia!");
 
   for(;i != NULL; i = i->next){
@@ -56,5 +56,5 @@ int main(){
   List * lista = create_list();
   DataNode data = {5};
   push(lista, data);
-  
+  printList(lista);
 }
