@@ -69,6 +69,15 @@ int say(int socket, char *s){
   return result;
 };
 int listener_d ;
+
+int catch_signal(int sig, void (*handler)(int)){
+  struct sigaction actions;
+  actions.sa_handler = handler;
+  sigempty(&actions.sa_mask);
+  actions.sa_flags = 0;
+  return sigaction(sig,&actions,NULL);
+}
+
 void handle_shutdown(int sig){
   if(listener_d)
     close(listener_d);
@@ -77,9 +86,9 @@ void handle_shutdown(int sig){
 }
 
 int main(){
-  /*if(catch_signal(SIGINT, handle_shutdown) == -1){
+  if(catch_signal(SIGINT, handle_shutdown) == -1){
     errors("Can`t set the interrupt handle");
-  }*/
+  }
   //ciando socket
   listener_d = opem_listener_socket();
   //connectando o socke a porta
