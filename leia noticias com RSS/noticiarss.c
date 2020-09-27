@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <time.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 void error(char *msg){
   fprintf(stderr,"%s: %s\n",msg,strerror(errno));
@@ -35,7 +36,12 @@ int main(int argc,char *argv[]){
     if(execl("/usr/bin/python3","/usr/bin/python3","./rss/rss.py",urls[0],NULL) == -1){
       error("Can´t run script");
     }
-    
+
+  }
+  int pid_status;
+  //impede que o processo pai feche antes que seu filho termine a tarefa
+  if(waitpid(pid,&pid_status,0) == -1){
+    error("Erro no ao gravar aquivios");
   }
   fclose(f);
   return 0;
