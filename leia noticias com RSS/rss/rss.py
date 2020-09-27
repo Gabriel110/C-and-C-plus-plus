@@ -22,13 +22,15 @@ for o, a in opts:
 
 def newFeed(feed):
   NewsFeed = feedparser.parse(feed)
+  print("+++++++++++++++++++++++++ NEW FEED ++++++++++++++++++++++++++++++++++++++++++++++")
   print('Numero de RSS postados :', len(NewsFeed.entries))
   entry = NewsFeed.entries[1]
   #print(entry.keys())
   print('Titulo do pos: {0}'.format(entry.title))
   print('Data: {0}'.format(entry.published))
   #print('Sumario:{0}'.format(entry.summary_detail))
-  print('Link: {0}'.format(entry.link))
+  print('Link: {0}\n'.format(entry.link))
+
 
 
 newFeed(args[0])

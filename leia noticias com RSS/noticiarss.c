@@ -12,9 +12,11 @@ void error(char *msg){
 
 int main(int argc,char *argv[]){
   char *urls[] = {"https://www.inovacaotecnologica.com.br/boletim/rss.xml"};
-  FILE *f = fopen("stories.txt","w+");
+  FILE *f = fopen("stories.txt","r+");
+  fseek(f,0,SEEK_END);
   if(!f){
-    error("Can´t opem stories.txt");
+    FILE *f = fopen("stories.txt","w+");
+    error("Stories.txt criado, tente novamente");
   }
   //cria um processo filho
   pid_t pid = fork();
@@ -35,5 +37,6 @@ int main(int argc,char *argv[]){
     }
     
   }
+  fclose(f);
   return 0;
 }
