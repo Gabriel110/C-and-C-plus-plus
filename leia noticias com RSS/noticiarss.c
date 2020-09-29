@@ -25,12 +25,12 @@ void open_url(char*url){
 
 int main(int argc,char *argv[]){
   char *urls[] = {"https://www.inovacaotecnologica.com.br/boletim/rss.xml"};
-  FILE *f = fopen("stories.txt","r+");
-  fseek(f,0,SEEK_END);
-  if(!f){
-    FILE *f = fopen("stories.txt","w+");
-    error("Stories.txt criado, tente novamente");
-  }
+  //FILE *f = fopen("stories.txt","r+");
+ // fseek(f,0,SEEK_END);
+  // if(!f){
+  //   FILE *f = fopen("stories.txt","w+");
+  //   error("Stories.txt criado, tente novamente");
+  // }
   int fd[2];
 
   if(pipe(fd)==-1){
@@ -73,6 +73,6 @@ int main(int argc,char *argv[]){
     if(line[0] == '\t')
        open_url(line +1);
   }
-  fclose(f);
+  //fclose(f);
   return 0;
 }
