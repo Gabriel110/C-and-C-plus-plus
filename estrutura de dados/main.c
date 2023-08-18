@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "node.h"
 #include "stack.h"
+#include "queue.h"
 
 
 void testStack(){
